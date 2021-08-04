@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <h5><b>Your tweet/text sentiment is:</b></h5>
+        {% for i in result %}
+            {% if i==4 %}
+                positive
+            {% else %}
+                negative
+            {% endif %}
+        {% endfor %}
+        <div class="pt-2">
+            <h4>
+                {% if clf=='bn' %}
+                    Bernoulli NB
+                {% endif %}
+                {% if clf=='lg' %}
+                    Logistic Regression
+                {% endif %}
+                {% if clf=='sv' %}
+                    Support Vector Machines(SVM)
+                {% endif %}
+            </h4>
+            <p>According to the training and testing done by using this classifier, the accuracy of the result is near 
+            <span>
+                {% if clf=='bn' %}
+                    0.78479375.
+                {% endif %}
+                {% if clf=='lg' %}
+                    0.802471875.
+                {% endif %}
+                {% if clf=='sv' %}
+                    0.795721875.
+                {% endif %}
+            </span>
+            </p>
+        </div>
+    </div>
+{% endblock %}
